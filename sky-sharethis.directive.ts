@@ -33,7 +33,7 @@
 					'http://rest.sharethis.com/v1/share/share?destination='+encodeURIComponent(attrs.skySharethis)+
 						'&url='+encodeURIComponent($window.location.href)+
 						'&api_key='+encodeURIComponent(apikey),
-					'Share this',
+					'',
 					'status=0,toolbar=0,width=500,height=400'
 				);
 			});
