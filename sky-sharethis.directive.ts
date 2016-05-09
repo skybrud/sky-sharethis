@@ -29,6 +29,11 @@
 			element[0].title=attrs.skySharethis;
 			element.on('click', function() {
 				var apikey = attrs.apikey || sharethisapi;
+
+				if(attrs.skySharethis === "email") {
+					return $window.location.href = 'mailto:?body='+window.location.href;
+				}
+				
 				$window.open(
 					'http://rest.sharethis.com/v1/share/share?destination='+encodeURIComponent(attrs.skySharethis)+
 						'&url='+encodeURIComponent($window.location.href)+
