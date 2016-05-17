@@ -8,6 +8,8 @@
 	 * The value of the attribute "sky-sharethis" is the sharing destination
 	 * List of available destinations here: http://sharethis.com/publishers/services-directory
 	 *
+	 * Uses current url unless attribute "shareurl" is defined
+	 * 
 	 * The (optional) value of the attribute "apikey" is the users apikey for sharethis
 	 * Sign up for apikey here: http://developer.sharethis.com/apps/register
 	 *
@@ -29,16 +31,17 @@
 			element[0].title=attrs.skySharethis;
 			element.on('click', function() {
 				var apikey = attrs.apikey || sharethisapi;
-
+				var shareurl = attrs.shareurl || $window.location.href;
+				
 				if(attrs.skySharethis === "email") {
-					return $window.location.href = 'mailto:?body='+window.location.href;
+					return $window.location.href = 'mailto:?body='+shareurl;
 				}
 				
 				$window.open(
 					'http://rest.sharethis.com/v1/share/share?destination='+encodeURIComponent(attrs.skySharethis)+
-						'&url='+encodeURIComponent($window.location.href)+
+						'&url='+encodeURIComponent(shareurl)+
 						'&api_key='+encodeURIComponent(apikey),
-					'',
+					'Share this',
 					'status=0,toolbar=0,width=500,height=400'
 				);
 			});
