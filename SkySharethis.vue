@@ -1,28 +1,28 @@
 <script>
-	/**
-	 * This is the skySharethis directive
-	 * Usage:
-	 * <button
-	 * 		sky-sharethis="facebook"
-	 * 		apikey="rtqsa3gsn5td9u6uvb43cvyh">
-	 * 		share on facebook
-	 * </button>
-	 *
-	 * The value of the attribute "sky-sharethis"
-	 * is the sharing destination
-	 * List of available destinations here:
-	 * http://sharethis.com/publishers/services-directory
-	 *
-	 *
-	 * The (optional) value of the attribute "apikey" is the
-	 * users apikey for sharethis
-	 * Sign up for apikey here:
-	 * http://developer.sharethis.com/apps/register
-	 *
-	 *
-	 * Tools:
-	 * http://developer.sharethis.com/io-docs
-	 */
+/**
+ * This is the skySharethis directive
+ * Usage:
+ * <button
+ * 		sky-sharethis="facebook"
+ * 		apikey="rtqsa3gsn5td9u6uvb43cvyh">
+ * 		share on facebook
+ * </button>
+ *
+ * The value of the attribute "sky-sharethis"
+ * is the sharing destination
+ * List of available destinations here:
+ * http://sharethis.com/publishers/services-directory
+ *
+ *
+ * The (optional) value of the attribute "apikey" is the
+ * users apikey for sharethis
+ * Sign up for apikey here:
+ * http://developer.sharethis.com/apps/register
+ *
+ *
+ * Tools:
+ * http://developer.sharethis.com/io-docs
+ */
 export default {
 	props: {
 		media: {
@@ -51,11 +51,23 @@ export default {
 		},
 		shareUrl: {
 			type: String,
-			default: location.href,
+			default: () => {
+				if (typeof window !== 'undefined') {
+					return window.location.href;
+				}
+
+				return '';
+			},
 		},
 		title: {
 			type: String,
-			default: location.host,
+			default: () => {
+				if (typeof window !== 'undefined') {
+					return window.location.host;
+				}
+
+				return '';
+			},
 		},
 	},
 	data() {
@@ -97,4 +109,4 @@ export default {
 		<slot />
 	</button>
 </template>
-<style src="./sky-sharethis.scss"></style>
+<style src="./SkySharethis.scss"></style>

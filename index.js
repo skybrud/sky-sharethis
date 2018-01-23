@@ -1,6 +1,6 @@
 import Vue from 'vue';
-import skySharethis from './sky-sharethis';
+import SkySharethis from './SkySharethis';
 // Main component
-Vue.component('sky-sharethis', skySharethis);
+Vue.component('SkySharethis', SkySharethis);
 
-export default skySharethis;
+export default SkySharethis;
